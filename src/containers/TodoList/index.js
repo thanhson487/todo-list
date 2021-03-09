@@ -2,13 +2,14 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 import * as actionListTask from "./../../actions/listData";
+import ListItems from "../../components/ListItems";
 
 function TodoList(props) {
   const dispatch = useDispatch();
 
   const { listData } = useSelector((state) => state.listData);
 
-  const loadData = () => {
+  const LoadData = () => {
     dispatch(actionListTask.callListData());
   };
   const renderCardComplete = (listData) => {
@@ -17,17 +18,7 @@ function TodoList(props) {
       xhtml = listData.map((list, key) => {
         if (list.status === 1) {
           return (
-            <div className="card" key={list.title}>
-              <p>{list.title}</p>
-              <div className="card-icon">
-                <i className="fas fa-edit icon__edit"></i>
-                <i
-                  className="fas fa-trash icon__delete"
-                  onClick={() => deleleItem(list)}
-                ></i>
-              </div>
-              <div className="clearfix" />
-            </div>
+            <ListItems list = {list} />
           );
         } else {
           return null;
@@ -38,7 +29,7 @@ function TodoList(props) {
     return xhtml;
   };
 
-  const deleleItem = (list) => {
+  const DeleleItem = (list) => {
     dispatch(actionListTask.deleleTodo(list));
   };
   const renderCardNoComplete = (listData) => {
@@ -53,7 +44,7 @@ function TodoList(props) {
                 <i className="fas fa-edit icon__edit"></i>
                 <i
                   className="fas fa-trash icon__delete"
-                  onClick={() => deleleItem(list)}
+                  onClick={() => DeleleItem(list)}
                 ></i>
               </div>
               <div className="clearfix" />
@@ -71,7 +62,7 @@ function TodoList(props) {
   return (
     <div className="header">
       <button className="header__btnAdd">Thêm mới công việc</button>
-      <button className="header__btnAdd" onClick={loadData}>
+      <button className="header__btnAdd" onClick={LoadData}>
         Load data
       </button>
       <p className="header__title">Công việc</p>
