@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.App {
+  height: 100vh;
+  background-image: url(../../assets/img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main {
+  width: 1200px;
+}

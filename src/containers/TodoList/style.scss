@@ -1,0 +1,58 @@
+.header {
+  &__btnAdd {
+    border: 20px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    padding: 5px;
+    margin-left: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid orange;
+    color: wheat;
+    &:first-child {
+      margin-left: 0px;
+    }
+    &:hover {
+      color: orange;
+    }
+  }
+  &__title {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: gray;
+  }
+  &__data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    &-col {
+      .title {
+        text-align: center;
+        font-size: 1.2em;
+      }
+
+      .card {
+        border: 2px solid orange;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0px;
+        }
+        &-icon {
+          float: right;
+          font-size: 1.2em;
+          color: white;
+          padding: 10px;
+          .icon__edit {
+            margin-right: 10px;
+          }
+        }
+        .clearfix::before {
+          content: "";
+          clear: both;
+          display: table;
+        }
+      }
+    }
+  }
+}
