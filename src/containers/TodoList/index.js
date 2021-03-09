@@ -83,6 +83,7 @@ function TodoList(props) {
         </div>
         <div className="header__data-col">
           <p className="title">Đã hoàn thành</p>
+
           {renderCardComplete(listData)}
         </div>
       </div>

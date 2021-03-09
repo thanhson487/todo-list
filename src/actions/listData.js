@@ -1,10 +1,7 @@
 import * as listDataConstants from "./../constants/listData";
-export const callListData = (params = {}) => {
+export const callListData = () => {
   return {
     type: listDataConstants.CALL_LIST_DATA,
-    payload: {
-      params,
-    },
   };
 };
 export const callListDataSuccess = (data) => {

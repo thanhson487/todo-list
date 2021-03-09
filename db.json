@@ -1,8 +1,13 @@
 {
   "todoList": [
     {
-      "id": 3,
-      "title": "Doan xem",
+      "id": 1,
+      "title": "Học toán lúc 10h",
+      "status": 0
+    },
+    {
+      "id": 2,
+      "title": "Học Anh lúc 12h",
       "status": 1
     }
   ]
