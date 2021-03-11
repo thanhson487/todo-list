@@ -1,6 +1,8 @@
 import * as type from "./..//constants/listData";
 const initialState = {
   listData: null,
+  openform: false,
+  data: [],
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {

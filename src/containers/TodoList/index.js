@@ -4,6 +4,7 @@ import "./style.scss";
 import * as actionListTask from "./../../actions/listData";
 import ListItems from "../../components/ListItems";
 
+
 function TodoList(props) {
   const dispatch = useDispatch();
 
@@ -17,9 +18,7 @@ function TodoList(props) {
     if (listData) {
       xhtml = listData.map((list, key) => {
         if (list.status === 1) {
-          return (
-            <ListItems list = {list} />
-          );
+          return <ListItems list={list} key={list.title} />;
         } else {
           return null;
         }

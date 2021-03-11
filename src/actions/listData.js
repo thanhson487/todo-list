@@ -32,3 +32,9 @@ export const deleteTodoSuccess = (params = {}) => {
     },
   };
 };
+export const editTodo = (data) =>{
+  return {
+    type: listDataConstants.EDIT_TODO,
+    payload: data
+  }
+}
