@@ -6,3 +6,6 @@ export const DELETE_TODO_SUCCESS = "DELETE_TODO_SUCCESS";
 export const EDIT_TODO = "EDIT_TODO";
 export const EDIT_TODO_SUCCESS = "EDIT_TODO_SUCCESS";
 export const EDIT_TODO_FALSE = "EDIT_TODO_FALSE";
+export const ADD_DATA = "ADD_DATA";
+export const ADD_DATA_SUCCESS = "ADD_DATA_SUCCESS";
+export const CLOSE_FORM = "CLOSE_FORM";

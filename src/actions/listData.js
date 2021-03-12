@@ -32,9 +32,32 @@ export const deleteTodoSuccess = (params = {}) => {
     },
   };
 };
-export const editTodo = (data) =>{
+export const editTodo = (openform, data, title) => {
   return {
     type: listDataConstants.EDIT_TODO,
-    payload: data
-  }
-}
+    payload: { openform, data, title },
+  };
+};
+export const editTodoSuccess = (data) => {
+  return {
+    type: listDataConstants.EDIT_TODO_SUCCESS,
+    payload: data,
+  };
+};
+export const addData = (title) => {
+  return {
+    type: listDataConstants.ADD_DATA,
+    payload: title,
+  };
+};
+export const addDataSuccess = (data) => {
+  return {
+    type: listDataConstants.ADD_DATA_SUCCESS,
+    payload: data,
+  };
+};
+export const closeForm = () => {
+  return {
+    type: listDataConstants.CLOSE_FORM,
+  };
+};

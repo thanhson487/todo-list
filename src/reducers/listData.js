@@ -1,8 +1,10 @@
-import * as type from "./..//constants/listData";
+import * as type from "./../constants/listData";
 const initialState = {
   listData: null,
   openform: false,
   data: [],
+  listEdit: null,
+  title: "",
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,6 +23,55 @@ const reducer = (state = initialState, action) => {
         ...state,
       };
     }
+    case type.EDIT_TODO: {
+      const { openform, data, title } = action.payload;
+
+      return {
+        ...state,
+        openform: openform,
+        listEdit: data,
+        title: title,
+      };
+    }
+    case type.EDIT_TODO_SUCCESS: {
+      const data = action.payload;
+      const { listData } = state;
+      const index = listData.findIndex((value) => {
+        return value.id === data.id;
+      });
+      const newListData = [...listData];
+      newListData[index] = data;
+
+      return {
+        ...state,
+        openform: false,
+        listData: newListData,
+        listEdit: null,
+      };
+    }
+    case type.CLOSE_FORM: {
+      return {
+        ...state,
+        openform: false,
+        listEdit: null,
+      };
+    }
+    case type.ADD_DATA: {
+      const title = action.payload;
+      return {
+        ...state,
+        openform: true,
+        title: title,
+      };
+    }
+    case type.ADD_DATA_SUCCESS: {
+      return {
+        ...state,
+        openform: false,
+        title: "",
+      };
+    }
+
     default:
       return state;
   }

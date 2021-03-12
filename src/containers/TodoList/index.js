@@ -1,9 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
-import * as actionListTask from "./../../actions/listData";
+import * as actionListTask from "../../actions/listData";
 import ListItems from "../../components/ListItems";
-
 
 function TodoList(props) {
   const dispatch = useDispatch();
@@ -27,7 +26,10 @@ function TodoList(props) {
 
     return xhtml;
   };
-
+  const addData = () => {
+    const title = "title";
+    dispatch(actionListTask.addData(title));
+  };
   const DeleleItem = (list) => {
     dispatch(actionListTask.deleleTodo(list));
   };
@@ -60,7 +62,9 @@ function TodoList(props) {
 
   return (
     <div className="header">
-      <button className="header__btnAdd">Thêm mới công việc</button>
+      <button className="header__btnAdd" onClick={addData}>
+        Thêm mới công việc
+      </button>
       <button className="header__btnAdd" onClick={LoadData}>
         Load data
       </button>

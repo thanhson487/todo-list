@@ -1,32 +1,31 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actionListTask from "./../../actions/listData";
 
+import "./style.scss";
 function ListItems(props) {
   const dispatch = useDispatch();
-  
+  let openform = useSelector((state) => state.listData.openform);
+
   const { list } = props;
-  
 
   const DeleleItem = (list) => {
     dispatch(actionListTask.deleleTodo(list));
-   
   };
-  function EditItems(list) {
-    console.log(list);
-    
-
+  const EditItems = (list) => {
+    openform = true;
+    const title = "edit"
+    dispatch(actionListTask.editTodo(openform, list, title));
   };
 
   return (
-    <div className="card" key={list.title}>
-  
+    <div className="card1" key={list.title}>
       <p>{list.title}</p>
-      <div className="card-icon">
+      <div className="card1-icon">
         <i
           className="fas fa-edit icon__edit"
           onClick={() => {
-            EditItems(list)
+            EditItems(list);
           }}
         ></i>
         <i
