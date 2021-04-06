@@ -10,9 +10,7 @@ import { STATUS_CODE } from "./../constants/api";
 import * as listDataConstants from "./../constants/listData";
 function* callListData() {
   const res = yield call(getListData);
-  console.log("test", res);
   const { data } = res;
-
   if (res.status === STATUS_CODE.SUCCESS) {
     yield put(callListDataSuccess(data));
   } else {
@@ -35,14 +33,10 @@ function* editTodoSuccess({ payload }) {
   yield call(editTodo, data);
 }
 function* addDataSuccess({ payload }) {
-  const data1 = payload.data;
-  console.log(data1);
-
-  yield call(addData, data1);
+  const dataAdd = payload;
+  yield call(addData, dataAdd);
   const res = yield call(getListData);
-  console.log("test", res);
   const { data } = res;
-
   yield put(callListDataSuccess(data));
 }
 function* rootSaga() {

@@ -12,54 +12,23 @@ function TodoList(props) {
   const LoadData = () => {
     dispatch(actionListTask.callListData());
   };
-  const renderCardComplete = (listData) => {
-    let xhtml = null;
-    if (listData) {
-      xhtml = listData.map((list, key) => {
-        if (list.status === 1) {
-          return <ListItems list={list} key={list.title} />;
-        } else {
-          return null;
-        }
-      });
-    }
 
-    return xhtml;
+  const renderCardNoComplete = (listData, status) => {
+    let xhtml = null;
+    if (listData !== null) {
+      xhtml = listData.map((list, key) => {
+        if (list.status === status) {
+          return <ListItems list={list} />;
+        } else return null;
+      });
+      return xhtml;
+    }
   };
+
   const addData = () => {
     const title = "title";
     dispatch(actionListTask.addData(title));
   };
-  const DeleleItem = (list) => {
-    dispatch(actionListTask.deleleTodo(list));
-  };
-  const renderCardNoComplete = (listData) => {
-    let xhtml = null;
-    if (listData) {
-      xhtml = listData.map((list) => {
-        if (list.status === 0) {
-          return (
-            <div className="card" key={list.title}>
-              <p>{list.title}</p>
-              <div className="card-icon">
-                <i className="fas fa-edit icon__edit"></i>
-                <i
-                  className="fas fa-trash icon__delete"
-                  onClick={() => DeleleItem(list)}
-                ></i>
-              </div>
-              <div className="clearfix" />
-            </div>
-          );
-        } else {
-          return null;
-        }
-      });
-    }
-
-    return xhtml;
-  };
-
   return (
     <div className="header">
       <button className="header__btnAdd" onClick={addData}>
@@ -72,13 +41,11 @@ function TodoList(props) {
       <div className="header__data">
         <div className="header__data-col">
           <p className="title">Chưa hoàn thành</p>
-
-          {renderCardNoComplete(listData)}
+          {renderCardNoComplete(listData, 0)}
         </div>
         <div className="header__data-col">
           <p className="title">Đã hoàn thành</p>
-
-          {renderCardComplete(listData)}
+          {renderCardNoComplete(listData, 1)}
         </div>
       </div>
     </div>

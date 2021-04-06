@@ -1,9 +1,8 @@
-import "./style.scss";
-import { useSelector, useDispatch } from "react-redux";
-import React, { useState, useEffect } from "react";
-import nextId from "react-id-generator";
-import * as actionData from "./../../actions/listData";
 import getUid from "get-uid";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as actionData from "./../../actions/listData";
+import "./style.scss";
 function FormTodo(props) {
   const data = useSelector((state) => state.listData.listEdit);
   const titleName = useSelector((state) => state.listData.title);
@@ -59,7 +58,7 @@ function FormTodo(props) {
     <div className="form-edit">
       <form className="form-edit-todo" onSubmit={hanleSubmit}>
         <div className="form-group">
-          <label>Tên công việc</label>
+          <label className = "boder">Tên công việc</label>
           <input
             type="text"
             className="form-control"
